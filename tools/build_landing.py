@@ -78,17 +78,17 @@ footer{{border-top:1px solid rgba(255,255,255,.1);padding:34px 0 calc(34px + env
 .row{{grid-template-columns:70px 1fr;padding:26px 0;gap:14px 18px}}.row p{{grid-column:1/-1}}.row b{{font-size:40px}}.row h3{{font-size:26px}}.end h2{{font-size:38px}}.end{{padding:80px 0 60px}}}}
 @media(prefers-reduced-motion:reduce){{*{{animation:none!important;transition:none!important}}.scr img:first-child{{opacity:1}}.rv{{opacity:1;transform:none}}}}
 </style></head><body>
-<header class="top"><div class="w">{ME('#fff')}<b>mesoestetic</b><nav><a href="/diagnostika/">Диагностика</a><a href="/brand/">О бренде</a><a class="cta" href="#download">Скачать</a></nav></div></header>
+<header class="top"><div class="w">{ME('#fff')}<b>mesoestetic</b><nav><a href="diagnostika/">Диагностика</a><a href="brand/">О бренде</a><a class="cta" href="#download">Скачать</a></nav></div></header>
 <section class="hero"><div class="glow"></div><div class="orbit">{TILES}</div><div class="phone"><div class="scr">{SCR}</div></div><div class="ttl"><h1>главный элемент</h1></div></section>
 <section class="sub" id="download"><div class="w"><p>Приложение-справочник mesoestetic® для косметологов и&nbsp;врачей: {NP}&nbsp;препаратов, {len(L)}&nbsp;линий, протоколы и&nbsp;диагностика — всегда под рукой, даже без интернета.</p>{DL}</div></section>
 <div class="w rows">
 <div class="row rv"><b>01</b><h3>Препараты и составы</h3><p>Эффекты, активы, идеальный клиент, INCI со&nbsp;ссылками на&nbsp;глоссарий. Умный поиск по&nbsp;задаче кожи.</p></div>
 <div class="row rv"><b>02</b><h3>Протоколы</h3><p>{NPR} комбинированных протоколов: кабинет по&nbsp;фазам со&nbsp;временем шагов и&nbsp;домашний уход.</p></div>
-<div class="row rv"><b>03</b><h3>Диагностика age element®</h3><p>Персональная формула бустеров и&nbsp;схема домашнего ухода — красивой карточкой для&nbsp;клиента.<br><a class="more" href="/diagnostika/">Пройти диагностику →</a></p></div>
+<div class="row rv"><b>03</b><h3>Диагностика age element®</h3><p>Персональная формула бустеров и&nbsp;схема домашнего ухода — красивой карточкой для&nbsp;клиента.<br><a class="more" href="diagnostika/">Пройти диагностику →</a></p></div>
 <div class="row rv"><b>04</b><h3>Академия</h3><p>Тесты-ситуации из&nbsp;практики, медали и&nbsp;сертификат специалиста.</p></div></div>
 <section class="end"><div class="w rv">{ME('#fff')}<h2>для экспертов<br>в&nbsp;уходе за&nbsp;кожей</h2>{DL}
 <p class="note">Доступ по&nbsp;коду — запросите у&nbsp;куратора:<br><a href="mailto:s.gru-pro@yandex.ru">s.gru-pro@yandex.ru</a> · Telegram <a href="https://t.me/gru_s">@gru_s</a></p></div></section>
-<footer><div class="w"><span>ООО «Бьюти Альянс» — эксклюзивный дистрибьютор mesoestetic® в&nbsp;России<br>Москва, Огородный проезд, 16/1, стр.&nbsp;4, офис 1212 · +7 (495) 960-14-36</span><span><a href="/brand/">О бренде</a> · <a href="/diagnostika/">Диагностика</a></span></div></footer>
+<footer><div class="w"><span>ООО «Бьюти Альянс» — эксклюзивный дистрибьютор mesoestetic® в&nbsp;России<br>Москва, Огородный проезд, 16/1, стр.&nbsp;4, офис 1212 · +7 (495) 960-14-36</span><span><a href="brand/">О бренде</a> · <a href="diagnostika/">Диагностика</a></span></div></footer>
 <div class="modal" id="ios" role="dialog" aria-modal="true" aria-label="Установка на iPhone"><div class="sheet"><button class="x" aria-label="Закрыть">×</button>
 <h3>Установка на iPhone</h3><p class="s">Справочник ставится на экран «Домой» как приложение — без App Store.</p>
 <ol><li><span>Откройте <b>app.i-love-me.ru</b> в&nbsp;Safari</span></li><li><span>Нажмите «Поделиться» <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 0L8 7m4-4l4 4M5 11v9h14v-9"/></svg> внизу экрана</span></li><li><span>Выберите «На экран „Домой“» и&nbsp;нажмите «Добавить»</span></li></ol>
