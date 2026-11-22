@@ -96,9 +96,8 @@ function vQuestion(){
   var pro = /специалист|косметолог/i.test(hint) && !/клиент/i.test(hint);
   return '<section class="scr" data-k="' + st.i + '"><div class="qn"><span class="mono">Вопрос ' + String(st.i + 1).padStart(2, '0') + ' / ' + STEPS.length + '</span><span class="who' + (pro ? ' pro' : '') + '">' + esc(hint) + '</span></div>'
     + '<div class="prog">' + STEPS.map(function(_, k){ return '<i class="' + (k <= st.i ? 'on' : '') + '"></i>'; }).join('') + '</div>'
+    + '<div class="mini" aria-hidden="true">' + KEYS.map(function(k, i){ return '<div class="col">' + syringe(COL[k], t[k] / mx, i, 21) + '<span>' + short(k) + '</span></div>'; }).join('') + '</div>'
     + '<h2>' + nb(text) + '</h2>' + body
-    + '<div class="mini" aria-hidden="true">' + KEYS.map(function(k, i){ return '<div class="col">' + syringe(COL[k], t[k] / mx, i, 30) + '<span>' + short(k) + '</span></div>'; }).join('') + '</div>'
-    + '<p class="mono" style="text-align:center">формула наполняется по ответам</p>'
     + '<div class="nav"><button class="ghost" data-go="back"' + (st.i === 0 ? ' disabled style="opacity:.3"' : '') + '>Назад</button><button class="btn" data-go="next"' + (ok ? '' : ' disabled') + '>' + (st.i === STEPS.length - 1 ? 'Получить формулу' : 'Далее') + '</button></div></section>';
 }
 function phIcon(c){
@@ -132,10 +131,18 @@ function actions(card){
     + '<button class="ghost" data-go="edit">Изменить ответы</button><button class="ghost" data-go="restart">Новый клиент</button></div>';
 }
 
+var advT = 0;
+function autoNext(){
+  clearTimeout(advT); var i0 = st.i;
+  advT = setTimeout(function(){ if (st.screen !== 'question' || st.i !== i0) return;
+    if (st.i < STEPS.length - 1) st.i++; else { st.screen = 'result'; st.tab = 0; } render(true); }, 750);
+}
 function render(scroll){
+  clearTimeout(advT);
   sid = 0;
   app.innerHTML = st.screen === 'intro' ? vIntro() : st.screen === 'result' ? vResult() : vQuestion();
-  if (scroll) window.scrollTo(0, 0);
+  document.body.classList.toggle('q', st.screen === 'question');
+  if (scroll) window.scrollTo({top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto'});
   save();
 }
 app.addEventListener('click', function(e){
@@ -145,8 +152,9 @@ app.addEventListener('click', function(e){
     app.querySelectorAll('.opt').forEach(function(o){ o.classList.toggle('on', o === x); });
     var t = totals(), mx = Math.max(14, Math.max.apply(null, KEYS.map(function(k){ return t[k]; })) + 4);
     app.querySelectorAll('.mini .syr').forEach(function(s, i){ s.style.setProperty('--lv', (t[KEYS[i]] / mx).toFixed(3)); });
-    var nx = app.querySelector('[data-go="next"]'); if (nx) nx.disabled = false; save(); return; }
-  if (x.dataset.rank){ var k = x.dataset.rank; if (!st.rank[k]){ st.order.push(k); st.rank[k] = st.order.length; } render(false); return; }
+    var nx = app.querySelector('[data-go="next"]'); if (nx) nx.disabled = false; save();
+    autoNext(); return; }
+  if (x.dataset.rank){ var k = x.dataset.rank; if (!st.rank[k]){ st.order.push(k); st.rank[k] = st.order.length; } render(false); if (st.order.length === 4) autoNext(); return; }
   if (x.dataset.tab){ st.tab = +x.dataset.tab; var y = window.scrollY; render(false); window.scrollTo(0, y); return; }
   var a = x.dataset.go;
   if (a === 'start'){ st.screen = 'question'; st.i = 0; }
